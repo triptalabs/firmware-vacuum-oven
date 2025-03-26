@@ -17,7 +17,7 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           files: |
-            firmware.bin
+            lvgl_porting.bin
             bootloader.bin
             partitions.bin
         env:
