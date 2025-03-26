@@ -1,0 +1,24 @@
+name: Upload ESP32 Firmware to Release
+
+on:
+  push:
+    tags:
+      - "v*"  # Se ejecuta cuando se crea un tag como v1.0.0
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Upload Firmware to GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            firmware.bin
+            bootloader.bin
+            partitions.bin
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
